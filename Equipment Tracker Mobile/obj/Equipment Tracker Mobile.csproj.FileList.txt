@@ -1,0 +1,19 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\Equipment Tracker.exe
+bin\Debug\Equipment Tracker.pdb
+bin\Debug\Symbol.Barcode.dll
+bin\Debug\Symbol.BarcodeForms.dll
+bin\Debug\Symbol.dll
+bin\Debug\Symbol.StandardForms.dll
+bin\Debug\Symbol.BarcodeForms.xml
+bin\Debug\Symbol.xml
+bin\Debug\Symbol.StandardForms.xml
+bin\Debug\Symbol.Barcode.xml
+obj\Debug\EquipmentTracker.checkOutForm.resources
+obj\Debug\EquipmentTracker.equipmentForm.resources
+obj\Debug\EquipmentTracker.equipTrackerMobile.resources
+obj\Debug\EquipmentTracker.personnelForm.resources
+obj\Debug\EquipmentTracker.Properties.Resources.resources
+obj\Debug\Equipment Tracker Mobile.csproj.GenerateResource.Cache
+obj\Debug\Equipment Tracker.exe
+obj\Debug\Equipment Tracker.pdb

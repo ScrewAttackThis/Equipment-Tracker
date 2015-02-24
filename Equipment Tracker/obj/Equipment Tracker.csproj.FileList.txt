@@ -1,0 +1,8 @@
+bin\Debug\Equipment Tracker.exe
+bin\Debug\Equipment Tracker.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Equipment_Tracker.equipmentTrackerForm.resources
+obj\Debug\Equipment_Tracker.Properties.Resources.resources
+obj\Debug\Equipment Tracker.csproj.GenerateResource.Cache
+obj\Debug\Equipment Tracker.exe
+obj\Debug\Equipment Tracker.pdb

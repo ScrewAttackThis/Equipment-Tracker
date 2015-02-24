@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equipment Tracker Mobile", "Equipment Tracker Mobile\Equipment Tracker Mobile.csproj", "{7D4FA340-0602-43F7-BB9F-14118C70AB7A}"
+EndProject
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "Equipment Tracker Mobile Setup", "Equipment Tracker Mobile Setup\Equipment Tracker Mobile Setup.vddproj", "{82E809CD-007F-4E6A-A6D7-FC0DBC703CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equipment Tracker", "Equipment Tracker\Equipment Tracker.csproj", "{07132A6F-8646-4F13-9722-7CBC01FC96A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D4FA340-0602-43F7-BB9F-14118C70AB7A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{82E809CD-007F-4E6A-A6D7-FC0DBC703CCC}.Debug|Any CPU.ActiveCfg = Debug
+		{82E809CD-007F-4E6A-A6D7-FC0DBC703CCC}.Release|Any CPU.ActiveCfg = Release
+		{07132A6F-8646-4F13-9722-7CBC01FC96A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07132A6F-8646-4F13-9722-7CBC01FC96A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07132A6F-8646-4F13-9722-7CBC01FC96A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07132A6F-8646-4F13-9722-7CBC01FC96A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\bin\Debug\KUMPOT Mobile.exe
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\bin\Debug\KUMPOT Mobile.pdb
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT_Mobile.KUMPOTMobile.resources
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT_Mobile.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT Mobile.csproj.GenerateResource.Cache
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT Mobile.exe
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT Mobile.pdb
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\obj\Debug\KUMPOT_Mobile.personnelForm.resources
+C:\Users\Admin\Documents\Visual Studio 2005\Projects\KUMPOT\KUMPOT Mobile\bin\Debug\Data\KUMPOTMobileDatabase.sdf

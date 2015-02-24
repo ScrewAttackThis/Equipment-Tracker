@@ -1,0 +1,12 @@
+bin\Debug\KUMPOT Mobile.exe
+bin\Debug\KUMPOT Mobile.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\KUMPOT_Mobile.KUMPOTMobile.resources
+obj\Debug\KUMPOT_Mobile.personnelForm.resources
+obj\Debug\KUMPOT_Mobile.Properties.Resources.resources
+obj\Debug\KUMPOT Mobile.csproj.GenerateResource.Cache
+obj\Debug\KUMPOT Mobile.exe
+obj\Debug\KUMPOT Mobile.pdb
+obj\Debug\KUMPOT_Mobile.equipmentForm.resources
+bin\Debug\Symbol.Barcode.Design.dll
+bin\Debug\Symbol.Barcode.Design.xml

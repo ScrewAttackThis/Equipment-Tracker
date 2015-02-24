@@ -1,0 +1,152 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D4FA340-0602-43F7-BB9F-14118C70AB7A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EquipmentTracker</RootNamespace>
+    <AssemblyName>Equipment Tracker</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>4118C335-430C-497f-BE48-11C3316B135E</PlatformID>
+    <OSVersion>5.01</OSVersion>
+    <DeployDirSuffix>KUMPOT_Mobile</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <ApplicationIcon>drifter.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <NativePlatformName>Windows Mobile 5.0 Pocket PC SDK</NativePlatformName>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsCE.Forms" />
+    <Reference Include="mscorlib" />
+    <Reference Include="Symbol, Version=1.6.1.4, Culture=neutral, PublicKeyToken=68ec8db391f150ca" />
+    <Reference Include="Symbol.Barcode, Version=1.6.1.16, Culture=neutral, PublicKeyToken=68ec8db391f150ca" />
+    <Reference Include="Symbol.BarcodeForms, Version=1.6.1.12, Culture=neutral, PublicKeyToken=68ec8db391f150ca" />
+    <Reference Include="System" />
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.94.0, Culture=neutral, PublicKeyToken=1fdb50b1b62b4c84, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="checkOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="checkOutForm.Designer.cs">
+      <DependentUpon>checkOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="equipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="equipmentForm.Designer.cs">
+      <DependentUpon>equipmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="equipTrackerMobile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="equipTrackerMobile.Designer.cs">
+      <DependentUpon>equipTrackerMobile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="personnelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="personnelForm.Designer.cs">
+      <DependentUpon>personnelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="checkOutForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>checkOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="equipmentForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>equipmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="equipTrackerMobile.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>equipTrackerMobile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="personnelForm.resx">
+      <DependentUpon>personnelForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="util\Base32.cs" />
+    <Compile Include="util\CAC_PDF417.cs" />
+    <Compile Include="util\DBComponent.cs" />
+    <Compile Include="util\Equip_DataMatrix.cs" />
+    <Compile Include="util\Functions.cs" />
+    <Compile Include="util\Scanning.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="drifter.ico" />
+    <Content Include="resources\EquipmentTrackerLogoMobile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\kumpotDB.db3" />
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+</Project>

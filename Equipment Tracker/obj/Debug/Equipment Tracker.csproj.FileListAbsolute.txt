@@ -1,0 +1,8 @@
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\bin\Debug\Equipment Tracker.exe
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\bin\Debug\Equipment Tracker.pdb
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\ResolveAssemblyReference.cache
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment_Tracker.equipmentTrackerForm.resources
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment_Tracker.Properties.Resources.resources
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.csproj.GenerateResource.Cache
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.exe
+Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.pdb
