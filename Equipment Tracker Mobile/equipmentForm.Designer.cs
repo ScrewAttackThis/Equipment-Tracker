@@ -41,7 +41,6 @@ namespace EquipmentTracker
             this.productComboBox = new System.Windows.Forms.ComboBox();
             this.mfrComboBox = new System.Windows.Forms.ComboBox();
             this.serialNumberTextBox = new System.Windows.Forms.TextBox();
-            this.deleteMenuItem = new System.Windows.Forms.MenuItem();
             this.equipmentDetailsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +53,6 @@ namespace EquipmentTracker
             // 
             this.actionsEquipmentMenuItem.MenuItems.Add(this.insertEquipmentMenuItem);
             this.actionsEquipmentMenuItem.MenuItems.Add(this.menuItem2);
-            this.actionsEquipmentMenuItem.MenuItems.Add(this.deleteMenuItem);
             this.actionsEquipmentMenuItem.Text = "Actions";
             // 
             // insertEquipmentMenuItem
@@ -139,10 +137,6 @@ namespace EquipmentTracker
             this.serialNumberTextBox.Size = new System.Drawing.Size(188, 21);
             this.serialNumberTextBox.TabIndex = 5;
             // 
-            // deleteMenuItem
-            // 
-            this.deleteMenuItem.Text = "Delete";
-            // 
             // equipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -177,6 +171,5 @@ namespace EquipmentTracker
         private System.Windows.Forms.Label serialLabel;
         private System.Windows.Forms.Label partLabel;
         private System.Windows.Forms.Label mfrLabel;
-        private System.Windows.Forms.MenuItem deleteMenuItem;
     }
 }

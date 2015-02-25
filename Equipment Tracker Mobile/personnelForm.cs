@@ -92,7 +92,7 @@ namespace EquipmentTracker
 
         private void refreshPersonnelListbox()
         {
-            SQLiteDataAdapter etDBDataAdapter = new SQLiteDataAdapter("SELECT LastName || ', ' || FirstName || ' ' || Rank AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", etDBConnection);
+            SQLiteDataAdapter etDBDataAdapter = new SQLiteDataAdapter("SELECT Rank || ' ' || LastName || ', ' || FirstName AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", etDBConnection);
             DataSet etDBDataSet = new DataSet("Personnel");
 
             etDBConnection.Open();
@@ -178,7 +178,7 @@ namespace EquipmentTracker
 
         private void personnelListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (personnelListBox.Items.Count > 0)
+            if (personnelListBox.Items.Count != 0)
             {
                 if (personnelListBox.SelectedValue.ToString() != "System.Data.DataRowView")
                 {
@@ -368,7 +368,6 @@ namespace EquipmentTracker
                     deletePersonnelCommand.ExecuteNonQuery();
                     etDBConnection.Close();
                     refreshPersonnelListbox();
-                    MessageBox.Show("Person deleted succesfully.");
                 }
                 catch (SQLiteException sqliteEx)
                 {
