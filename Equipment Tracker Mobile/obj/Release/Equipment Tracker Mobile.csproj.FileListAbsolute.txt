@@ -1,0 +1,7 @@
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\ResolveAssemblyReference.cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\EquipmentTracker.checkOutForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\EquipmentTracker.equipmentForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\EquipmentTracker.equipTrackerMobile.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\EquipmentTracker.personnelForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\EquipmentTracker.Properties.Resources.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Release\Equipment Tracker Mobile.csproj.GenerateResource.Cache

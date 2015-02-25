@@ -1,0 +1,8 @@
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\bin\Release\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\bin\Release\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\ResolveAssemblyReference.cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\Equipment_Tracker.equipmentTrackerForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\Equipment_Tracker.Properties.Resources.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\Equipment Tracker.csproj.GenerateResource.Cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Release\Equipment Tracker.pdb
