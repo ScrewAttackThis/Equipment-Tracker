@@ -13,7 +13,7 @@ namespace EquipmentTracker
 {
     public partial class personnelForm : Form
     {
-        private SQLiteConnection kumpotDBConnection = new SQLiteConnection("Data Source=|DataDirectory|\\Data\\equiptracker.db3");
+        private SQLiteConnection etDBConnection = new SQLiteConnection("Data Source=|DataDirectory|\\Data\\equiptracker.db3");
 
         private System.EventHandler readerEventHandler;
 
@@ -24,12 +24,12 @@ namespace EquipmentTracker
 
         private void personnelForm_Load(object sender, EventArgs e)
         {
-            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT Branch, BranchCode FROM Branch", kumpotDBConnection);
+            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT Branch, BranchCode FROM Branch", etDBConnection);
             DataSet kumpotDBDataSet = new DataSet("Personnel");
 
-            kumpotDBConnection.Open();
+            etDBConnection.Open();
             kumpotDBDataAdapter.Fill(kumpotDBDataSet);
-            kumpotDBConnection.Close();
+            etDBConnection.Close();
 
             branchComboBox.DataSource = kumpotDBDataSet.Tables[0];
             branchComboBox.DisplayMember = "Branch";
@@ -92,12 +92,12 @@ namespace EquipmentTracker
 
         private void refreshPersonnelListbox()
         {
-            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT LastName || ', ' || FirstName || ' ' || Rank AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", kumpotDBConnection);
+            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT LastName || ', ' || FirstName || ' ' || Rank AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", etDBConnection);
             DataSet kumpotDBDataSet = new DataSet("Personnel");
 
-            kumpotDBConnection.Open();
+            etDBConnection.Open();
             kumpotDBDataAdapter.Fill(kumpotDBDataSet);
-            kumpotDBConnection.Close();
+            etDBConnection.Close();
 
             personnelListBox.DataSource = kumpotDBDataSet.Tables[0];
             personnelListBox.DisplayMember = "FullName";
@@ -113,12 +113,12 @@ namespace EquipmentTracker
             try
             {
                 SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT Personnel.LastName, Personnel.FirstName," +
-                    "Personnel.MiddleInitial, Personnel.PersonnelEDI, Personnel.Rank, Personnel.Branch FROM Personnel WHERE Personnel.PersonnelEDI = " + personnelEDI, kumpotDBConnection);
+                    "Personnel.MiddleInitial, Personnel.PersonnelEDI, Personnel.Rank, Personnel.Branch FROM Personnel WHERE Personnel.PersonnelEDI = " + personnelEDI, etDBConnection);
                 DataSet kumpotDBDataSet = new DataSet("Personnel");
 
-                kumpotDBConnection.Open();
+                etDBConnection.Open();
                 kumpotDBDataAdapter.Fill(kumpotDBDataSet);
-                kumpotDBConnection.Close();
+                etDBConnection.Close();
 
                 lastNameTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["LastName"].ToString();
                 firstNameTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["FirstName"].ToString();
@@ -133,7 +133,7 @@ namespace EquipmentTracker
             }
             finally
             {
-                kumpotDBConnection.Close();
+                etDBConnection.Close();
             }
         }
 
@@ -215,13 +215,22 @@ namespace EquipmentTracker
                 {
                     try
                     {
-                        SQLiteCommand addPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
-                        addPersonnelCommand.CommandText = "INSERT INTO Personnel (PersonnelEDI, FirstName, LastName, Rank, Branch, MiddleInitial) VALUES ('" +
-                            ediTextBox.Text.Trim() + "', '" + firstNameTextBox.Text.Trim() + "', '" + lastNameTextBox.Text.Trim() + "', '" +
-                            rankTextBox.Text.Trim() + "', '" + branchComboBox.SelectedValue.ToString() + "', '" + middleInitialTextBox.Text.Trim() + "')";
-                        kumpotDBConnection.Open();
-                        addPersonnelCommand.ExecuteScalar();
-                        kumpotDBConnection.Close();
+                        SQLiteCommand addPersonnelCommand = new SQLiteCommand(etDBConnection);
+                        addPersonnelCommand.CommandText = "INSERT INTO Personnel (PersonnelEDI, FirstName, LastName, Rank, Branch, MiddleInitial) " +
+                            "VALUES ($EDI,$FirstName,$LastName,$Rank,$Branch,$MiddleInitial)";
+
+                        
+                        addPersonnelCommand.Parameters.AddWithValue("$EDI", ediTextBox.Text.Trim());
+                        addPersonnelCommand.Parameters.AddWithValue("$FirstName", firstNameTextBox.Text.Trim());
+                        addPersonnelCommand.Parameters.AddWithValue("$LastName",lastNameTextBox.Text.Trim());
+                        addPersonnelCommand.Parameters.AddWithValue("$Rank",rankTextBox.Text.Trim());
+                        addPersonnelCommand.Parameters.AddWithValue("$Branch",branchComboBox.SelectedValue.ToString());
+                        addPersonnelCommand.Parameters.AddWithValue("$MiddleInitial",middleInitialTextBox.Text.Trim());
+
+                        //Open database and execute command
+                        etDBConnection.Open();
+                        addPersonnelCommand.ExecuteNonQuery();
+                        etDBConnection.Close();
                         MessageBox.Show("Personnel Added");
 
                         insertPersonnelMenuItem.Text = "New";
@@ -245,7 +254,7 @@ namespace EquipmentTracker
                     }
                     finally
                     {
-                        kumpotDBConnection.Close();
+                        etDBConnection.Close();
                     }
                 }
                 else
@@ -298,17 +307,25 @@ namespace EquipmentTracker
                 {
                     try
                     {
-                        SQLiteCommand editPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
+                        SQLiteCommand editPersonnelCommand = new SQLiteCommand(etDBConnection);
                         editPersonnelCommand.CommandText = "UPDATE Personnel " +
-                            "SET LastName = '" + lastNameTextBox.Text.Trim() + "', " +
-                            "FirstName = '" + firstNameTextBox.Text.Trim() + "', " +
-                            "MiddleInitial = '" + middleInitialTextBox.Text.Trim() + "', " +
-                            "Rank = '" + rankTextBox.Text.Trim() + "', " +
-                            "Branch = '" + branchComboBox.SelectedValue.ToString() + "' " +
-                            "WHERE PersonnelEDI = " + ediTextBox.Text.Trim();
-                        kumpotDBConnection.Open();
-                        editPersonnelCommand.ExecuteScalar();
-                        kumpotDBConnection.Close();
+                            "SET LastName = $LastName, " +
+                            "FirstName = $FirstName, " +
+                            "MiddleInitial = $MiddleInitial, " +
+                            "Rank = $Rank, " +
+                            "Branch = $Branch " +
+                            "WHERE PersonnelEDI = $EDI";
+
+                        editPersonnelCommand.Parameters.AddWithValue("$LastName", lastNameTextBox.Text.Trim());
+                        editPersonnelCommand.Parameters.AddWithValue("$FirstName", firstNameTextBox.Text.Trim());
+                        editPersonnelCommand.Parameters.AddWithValue("$MiddleInitial", middleInitialTextBox.Text.Trim());
+                        editPersonnelCommand.Parameters.AddWithValue("$Rank", rankTextBox.Text.Trim());
+                        editPersonnelCommand.Parameters.AddWithValue("$Branch", branchComboBox.SelectedValue.ToString());
+                        editPersonnelCommand.Parameters.AddWithValue("$EDI", ediTextBox.Text.Trim());
+
+                        etDBConnection.Open();
+                        editPersonnelCommand.ExecuteNonQuery();
+                        etDBConnection.Close();
                         togglePersonnelForm(false);
                         MessageBox.Show("Personnel Updated");
 
@@ -326,12 +343,12 @@ namespace EquipmentTracker
                     }
                     finally
                     {
-                        kumpotDBConnection.Close();
+                        etDBConnection.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Missing required information");
+                    MessageBox.Show("Missing required information.  Ensure a valid last name, first name, EDI, and rank have been entered.");
                 }
             }
         }
@@ -342,11 +359,11 @@ namespace EquipmentTracker
             {
                 try
                 {
-                    SQLiteCommand deletePersonnelCommand = new SQLiteCommand(@"DELETE FROM Personnel WHERE PersonnelEDI = $EDINumber", kumpotDBConnection);
+                    SQLiteCommand deletePersonnelCommand = new SQLiteCommand(@"DELETE FROM Personnel WHERE PersonnelEDI = $EDINumber", etDBConnection);
                     deletePersonnelCommand.Parameters.AddWithValue("$EDINumber", personnelListBox.SelectedValue.ToString());
-                    kumpotDBConnection.Open();
+                    etDBConnection.Open();
                     deletePersonnelCommand.ExecuteNonQuery();
-                    kumpotDBConnection.Close();
+                    etDBConnection.Close();
                     refreshPersonnelListbox();
                 }
                 catch (SQLiteException sqliteEx)
@@ -355,7 +372,7 @@ namespace EquipmentTracker
                 }
                 finally
                 {
-                    kumpotDBConnection.Close();
+                    etDBConnection.Close();
                 }
             }
         }
