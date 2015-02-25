@@ -24,14 +24,14 @@ namespace EquipmentTracker
 
         private void personnelForm_Load(object sender, EventArgs e)
         {
-            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT Branch, BranchCode FROM Branch", etDBConnection);
-            DataSet kumpotDBDataSet = new DataSet("Personnel");
+            SQLiteDataAdapter etDBDataAdapter = new SQLiteDataAdapter("SELECT Branch, BranchCode FROM Branch", etDBConnection);
+            DataSet etDBDataSet = new DataSet("Personnel");
 
             etDBConnection.Open();
-            kumpotDBDataAdapter.Fill(kumpotDBDataSet);
+            etDBDataAdapter.Fill(etDBDataSet);
             etDBConnection.Close();
 
-            branchComboBox.DataSource = kumpotDBDataSet.Tables[0];
+            branchComboBox.DataSource = etDBDataSet.Tables[0];
             branchComboBox.DisplayMember = "Branch";
             branchComboBox.ValueMember = "BranchCode";
 
@@ -92,14 +92,14 @@ namespace EquipmentTracker
 
         private void refreshPersonnelListbox()
         {
-            SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT LastName || ', ' || FirstName || ' ' || Rank AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", etDBConnection);
-            DataSet kumpotDBDataSet = new DataSet("Personnel");
+            SQLiteDataAdapter etDBDataAdapter = new SQLiteDataAdapter("SELECT Rank || ' ' || LastName || ', ' || FirstName AS FullName, PersonnelEDI FROM Personnel ORDER BY LastName", etDBConnection);
+            DataSet etDBDataSet = new DataSet("Personnel");
 
             etDBConnection.Open();
-            kumpotDBDataAdapter.Fill(kumpotDBDataSet);
+            etDBDataAdapter.Fill(etDBDataSet);
             etDBConnection.Close();
 
-            personnelListBox.DataSource = kumpotDBDataSet.Tables[0];
+            personnelListBox.DataSource = etDBDataSet.Tables[0];
             personnelListBox.DisplayMember = "FullName";
             personnelListBox.ValueMember = "PersonnelEDI";
             if (personnelListBox.Items.Count == 0)
@@ -112,20 +112,23 @@ namespace EquipmentTracker
         {
             try
             {
-                SQLiteDataAdapter kumpotDBDataAdapter = new SQLiteDataAdapter("SELECT Personnel.LastName, Personnel.FirstName," +
-                    "Personnel.MiddleInitial, Personnel.PersonnelEDI, Personnel.Rank, Personnel.Branch FROM Personnel WHERE Personnel.PersonnelEDI = " + personnelEDI, etDBConnection);
-                DataSet kumpotDBDataSet = new DataSet("Personnel");
+                SQLiteCommand personnelCommand = new SQLiteCommand("SELECT Personnel.LastName, Personnel.FirstName," +
+                    "Personnel.MiddleInitial, Personnel.PersonnelEDI, Personnel.Rank, Personnel.Branch FROM Personnel WHERE Personnel.PersonnelEDI = $EDI", etDBConnection);
+                personnelCommand.Parameters.AddWithValue("$EDI", personnelListBox.SelectedValue.ToString());
+                SQLiteDataAdapter etDBDataAdapter = new SQLiteDataAdapter(personnelCommand);
+
+                DataSet etDBDataSet = new DataSet("Personnel");
 
                 etDBConnection.Open();
-                kumpotDBDataAdapter.Fill(kumpotDBDataSet);
+                etDBDataAdapter.Fill(etDBDataSet);
                 etDBConnection.Close();
 
-                lastNameTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["LastName"].ToString();
-                firstNameTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["FirstName"].ToString();
-                middleInitialTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["MiddleInitial"].ToString();
-                ediTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["PersonnelEDI"].ToString();
-                rankTextBox.Text = kumpotDBDataSet.Tables[0].Rows[0]["Rank"].ToString();
-                branchComboBox.SelectedValue = kumpotDBDataSet.Tables[0].Rows[0]["Branch"].ToString();
+                lastNameTextBox.Text = etDBDataSet.Tables[0].Rows[0]["LastName"].ToString();
+                firstNameTextBox.Text = etDBDataSet.Tables[0].Rows[0]["FirstName"].ToString();
+                middleInitialTextBox.Text = etDBDataSet.Tables[0].Rows[0]["MiddleInitial"].ToString();
+                ediTextBox.Text = etDBDataSet.Tables[0].Rows[0]["PersonnelEDI"].ToString();
+                rankTextBox.Text = etDBDataSet.Tables[0].Rows[0]["Rank"].ToString();
+                branchComboBox.SelectedValue = etDBDataSet.Tables[0].Rows[0]["Branch"].ToString();
             }
             catch (SQLiteException sqliteEx)
             {
