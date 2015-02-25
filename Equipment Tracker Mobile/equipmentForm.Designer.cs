@@ -86,10 +86,10 @@ namespace EquipmentTracker
             this.equipmentDetailsPanel.Controls.Add(this.productComboBox);
             this.equipmentDetailsPanel.Controls.Add(this.mfrComboBox);
             this.equipmentDetailsPanel.Controls.Add(this.serialNumberTextBox);
-            this.equipmentDetailsPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.equipmentDetailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.equipmentDetailsPanel.Location = new System.Drawing.Point(0, 114);
             this.equipmentDetailsPanel.Name = "equipmentDetailsPanel";
-            this.equipmentDetailsPanel.Size = new System.Drawing.Size(152, 154);
+            this.equipmentDetailsPanel.Size = new System.Drawing.Size(240, 154);
             // 
             // serialLabel
             // 
@@ -119,14 +119,14 @@ namespace EquipmentTracker
             // 
             this.productComboBox.Location = new System.Drawing.Point(49, 31);
             this.productComboBox.Name = "productComboBox";
-            this.productComboBox.Size = new System.Drawing.Size(100, 22);
+            this.productComboBox.Size = new System.Drawing.Size(188, 22);
             this.productComboBox.TabIndex = 7;
             // 
             // mfrComboBox
             // 
             this.mfrComboBox.Location = new System.Drawing.Point(49, 3);
             this.mfrComboBox.Name = "mfrComboBox";
-            this.mfrComboBox.Size = new System.Drawing.Size(100, 22);
+            this.mfrComboBox.Size = new System.Drawing.Size(188, 22);
             this.mfrComboBox.TabIndex = 6;
             this.mfrComboBox.SelectedValueChanged += new System.EventHandler(this.mfrComboBox_SelectedValueChanged);
             // 
@@ -134,7 +134,7 @@ namespace EquipmentTracker
             // 
             this.serialNumberTextBox.Location = new System.Drawing.Point(49, 59);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
-            this.serialNumberTextBox.Size = new System.Drawing.Size(100, 21);
+            this.serialNumberTextBox.Size = new System.Drawing.Size(188, 21);
             this.serialNumberTextBox.TabIndex = 5;
             // 
             // equipmentForm
@@ -149,8 +149,8 @@ namespace EquipmentTracker
             this.MinimizeBox = false;
             this.Name = "equipmentForm";
             this.Text = "Equipment";
-            this.Closed += new System.EventHandler(this.equipmentForm_Closed);
             this.Load += new System.EventHandler(this.equipmentForm_Load);
+            this.Closed += new System.EventHandler(this.equipmentForm_Closed);
             this.equipmentDetailsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -137,62 +137,6 @@ namespace EquipmentTracker
             }
         }
 
-        private void insertPersonnelButton_Click(object sender, EventArgs e)
-        {
-            if (insertPersonnelButton.Text == "New")
-            {
-                togglePersonnelForm(true);
-                personnelListBox.Enabled = false;
-                insertPersonnelButton.Text = "Insert";
-                deletePersonnelButton.Enabled = false;
-                cancelButton.Enabled = true;
-                editPersonnelButton.Enabled = false;
-                clearPersonnelForm();
-                Scanning.StartRead();
-            }
-            else if(MessageBox.Show("Are you sure you want to commit this information to the database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                if (lastNameTextBox.Text != "" && firstNameTextBox.Text != "" && ediTextBox.Text != "" && rankTextBox.Text != "")
-                {
-                    try
-                    {
-                        SQLiteCommand addPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
-                        addPersonnelCommand.CommandText = "INSERT INTO Personnel (PersonnelEDI, FirstName, LastName, Rank, Branch, MiddleInitial) VALUES ('" +
-                            ediTextBox.Text.Trim() + "', '" + firstNameTextBox.Text.Trim() + "', '" + lastNameTextBox.Text.Trim() + "', '" +
-                            rankTextBox.Text.Trim() + "', '" + branchComboBox.SelectedValue.ToString() + "', '" + middleInitialTextBox.Text.Trim() + "')";
-                        kumpotDBConnection.Open();
-                        addPersonnelCommand.ExecuteScalar();
-                        kumpotDBConnection.Close();
-                        MessageBox.Show("Personnel Added");
-                        insertPersonnelButton.Text = "New";
-                        cancelButton.Enabled = false;
-                        deletePersonnelButton.Enabled = true;
-                        editPersonnelButton.Enabled = true;
-                        personnelListBox.Enabled = true;
-                        togglePersonnelForm(false);
-                        clearPersonnelForm();
-                        refreshPersonnelListbox();
-                        Scanning.StopRead();
-                    }
-                    catch (SQLiteException sqliteException)
-                    {
-                        MessageBox.Show(sqliteException.Message);
-                        //if (sqliteException.ErrorCode == SQLiteErrorCode.Constraint)
-                        //{
-                        //    MessageBox.Show("Entered EDI number is not unique and already added.  User is possibly already added.", "Invalid EDI", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                        //}
-                    }
-                    finally
-                    {
-                        kumpotDBConnection.Close();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Missing required information");
-                }
-            }
-        }
         private void clearPersonnelForm()
         {
             lastNameTextBox.Text = "";
@@ -223,115 +167,11 @@ namespace EquipmentTracker
                 branchComboBox.Enabled = false;
             }
         }
-        private void editPersonnelButton_Click(object sender, EventArgs e)
-        {
-            if(editPersonnelButton.Text == "Edit")
-            {
-                togglePersonnelForm(true);
-                ediTextBox.Enabled = false;
-                editPersonnelButton.Text = "Update";
-                cancelButton.Enabled = true;
-                deletePersonnelButton.Enabled = false;
-                insertPersonnelButton.Enabled = false;
-                personnelListBox.Enabled = false;
-            }
-            else if(MessageBox.Show("Are you sure you want to commit this information to the database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                if (lastNameTextBox.Text != "" && firstNameTextBox.Text != "" && ediTextBox.Text != "" && rankTextBox.Text != "")
-                {
-                    try
-                    {
-                        SQLiteCommand editPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
-                        editPersonnelCommand.CommandText = "UPDATE Personnel " +
-                            "SET LastName = '" + lastNameTextBox.Text.Trim() + "', " +
-                            "FirstName = '" + firstNameTextBox.Text.Trim() + "', " +
-                            "MiddleInitial = '" + middleInitialTextBox.Text.Trim() + "', " +
-                            "Rank = '" + rankTextBox.Text.Trim() + "', " +
-                            "Branch = '" + branchComboBox.SelectedValue.ToString() + "' " +
-                            "WHERE PersonnelEDI = " + ediTextBox.Text.Trim();
-                        kumpotDBConnection.Open();
-                        editPersonnelCommand.ExecuteScalar();
-                        kumpotDBConnection.Close();
-                        togglePersonnelForm(false);
-                        MessageBox.Show("Personnel Updated");
-                        editPersonnelButton.Text = "Edit";
-                        refreshPersonnelListbox();
-                        cancelButton.Enabled = false;
-                        deletePersonnelButton.Enabled = true;
-                        insertPersonnelButton.Enabled = true;
-                        ediTextBox.Enabled = true;
-                        personnelListBox.Enabled = true;
-                    }
-                    catch (SQLiteException sqliteException)
-                    {
-                        MessageBox.Show(sqliteException.Message.ToString());
-                    }
-                    finally
-                    {
-                        kumpotDBConnection.Close();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Missing required information");
-                }
-            }
-        }
-
-        private void deletePersonnelButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to delete the selected person?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                try
-                {
-                    SQLiteCommand editPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
-                    editPersonnelCommand.CommandText = "DELETE FROM Personnel WHERE PersonnelEDI = " + personnelListBox.SelectedValue.ToString();
-                    kumpotDBConnection.Open();
-                    editPersonnelCommand.ExecuteScalar();
-                    kumpotDBConnection.Close();
-                    refreshPersonnelListbox();
-                }
-                catch (SQLiteException sqliteEx)
-                {
-                    MessageBox.Show(sqliteEx.Message);
-                }
-                finally
-                {
-                    kumpotDBConnection.Close();
-                }
-            }
-        }
 
         private void personnelForm_Closed(object sender, EventArgs e)
         {
             Scanning.TermReader();
         }
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            if (insertPersonnelButton.Text == "Insert")
-            {
-                insertPersonnelButton.Text = "New";
-                Scanning.StopRead();
-                togglePersonnelForm(false);
-                clearPersonnelForm();     
-                refreshPersonnelDetails(personnelListBox.SelectedValue.ToString());
-                editPersonnelButton.Enabled = true;
-            }
-            else if (editPersonnelButton.Text == "Update")
-            {
-                editPersonnelButton.Text = "Edit";
-                togglePersonnelForm(false);
-                clearPersonnelForm();
-                refreshPersonnelDetails(personnelListBox.SelectedValue.ToString());
-                insertPersonnelButton.Enabled = true;
-                ediTextBox.Enabled = true;
-            }
-            personnelListBox.Enabled = true;
-            cancelButton.Enabled = false;
-            deletePersonnelButton.Enabled = true;
-        }
-
 
         private void personnelListBox_SelectedValueChanged(object sender, EventArgs e)
         {

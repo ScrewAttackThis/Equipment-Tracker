@@ -45,19 +45,13 @@ namespace EquipmentTracker
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.personnelListBox = new System.Windows.Forms.ListBox();
             this.personnelMainMenu = new System.Windows.Forms.MainMenu();
-            this.controlsPanel = new System.Windows.Forms.Panel();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.insertPersonnelButton = new System.Windows.Forms.Button();
-            this.deletePersonnelButton = new System.Windows.Forms.Button();
-            this.editPersonnelButton = new System.Windows.Forms.Button();
-            this.personnelInputPanel = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
             this.actionsMenuItem = new System.Windows.Forms.MenuItem();
             this.insertPersonnelMenuItem = new System.Windows.Forms.MenuItem();
             this.editPersonnelMenuItem = new System.Windows.Forms.MenuItem();
             this.deletePersonnelMenuItem = new System.Windows.Forms.MenuItem();
             this.cancelMenuItem = new System.Windows.Forms.MenuItem();
+            this.personnelInputPanel = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
             this.personnelDetailsPanel.SuspendLayout();
-            this.controlsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // personnelDetailsPanel
@@ -74,17 +68,17 @@ namespace EquipmentTracker
             this.personnelDetailsPanel.Controls.Add(this.middleInitialLabel);
             this.personnelDetailsPanel.Controls.Add(this.firstNameLabel);
             this.personnelDetailsPanel.Controls.Add(this.lastNameLabel);
-            this.personnelDetailsPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.personnelDetailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personnelDetailsPanel.Location = new System.Drawing.Point(0, 100);
             this.personnelDetailsPanel.Name = "personnelDetailsPanel";
-            this.personnelDetailsPanel.Size = new System.Drawing.Size(159, 168);
+            this.personnelDetailsPanel.Size = new System.Drawing.Size(240, 168);
             // 
             // branchComboBox
             // 
             this.branchComboBox.Enabled = false;
             this.branchComboBox.Location = new System.Drawing.Point(62, 146);
             this.branchComboBox.Name = "branchComboBox";
-            this.branchComboBox.Size = new System.Drawing.Size(89, 22);
+            this.branchComboBox.Size = new System.Drawing.Size(175, 22);
             this.branchComboBox.TabIndex = 12;
             // 
             // rankTextBox
@@ -92,7 +86,7 @@ namespace EquipmentTracker
             this.rankTextBox.Location = new System.Drawing.Point(52, 118);
             this.rankTextBox.Name = "rankTextBox";
             this.rankTextBox.ReadOnly = true;
-            this.rankTextBox.Size = new System.Drawing.Size(100, 21);
+            this.rankTextBox.Size = new System.Drawing.Size(185, 21);
             this.rankTextBox.TabIndex = 11;
             // 
             // ediTextBox
@@ -100,7 +94,7 @@ namespace EquipmentTracker
             this.ediTextBox.Location = new System.Drawing.Point(52, 90);
             this.ediTextBox.Name = "ediTextBox";
             this.ediTextBox.ReadOnly = true;
-            this.ediTextBox.Size = new System.Drawing.Size(100, 21);
+            this.ediTextBox.Size = new System.Drawing.Size(185, 21);
             this.ediTextBox.TabIndex = 10;
             // 
             // middleInitialTextBox
@@ -108,7 +102,7 @@ namespace EquipmentTracker
             this.middleInitialTextBox.Location = new System.Drawing.Point(52, 62);
             this.middleInitialTextBox.Name = "middleInitialTextBox";
             this.middleInitialTextBox.ReadOnly = true;
-            this.middleInitialTextBox.Size = new System.Drawing.Size(100, 21);
+            this.middleInitialTextBox.Size = new System.Drawing.Size(185, 21);
             this.middleInitialTextBox.TabIndex = 9;
             // 
             // firstNameTextBox
@@ -116,7 +110,7 @@ namespace EquipmentTracker
             this.firstNameTextBox.Location = new System.Drawing.Point(52, 34);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.ReadOnly = true;
-            this.firstNameTextBox.Size = new System.Drawing.Size(100, 21);
+            this.firstNameTextBox.Size = new System.Drawing.Size(185, 21);
             this.firstNameTextBox.TabIndex = 8;
             // 
             // lastNameTextBox
@@ -124,7 +118,7 @@ namespace EquipmentTracker
             this.lastNameTextBox.Location = new System.Drawing.Point(52, 6);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.ReadOnly = true;
-            this.lastNameTextBox.Size = new System.Drawing.Size(100, 21);
+            this.lastNameTextBox.Size = new System.Drawing.Size(185, 21);
             this.lastNameTextBox.TabIndex = 7;
             // 
             // branchLabel
@@ -189,58 +183,6 @@ namespace EquipmentTracker
             this.personnelMainMenu.MenuItems.Add(this.actionsMenuItem);
             this.personnelMainMenu.MenuItems.Add(this.cancelMenuItem);
             // 
-            // controlsPanel
-            // 
-            this.controlsPanel.Controls.Add(this.cancelButton);
-            this.controlsPanel.Controls.Add(this.insertPersonnelButton);
-            this.controlsPanel.Controls.Add(this.deletePersonnelButton);
-            this.controlsPanel.Controls.Add(this.editPersonnelButton);
-            this.controlsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlsPanel.Location = new System.Drawing.Point(159, 100);
-            this.controlsPanel.Name = "controlsPanel";
-            this.controlsPanel.Size = new System.Drawing.Size(81, 168);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Enabled = false;
-            this.cancelButton.Location = new System.Drawing.Point(4, 144);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(72, 20);
-            this.cancelButton.TabIndex = 7;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // insertPersonnelButton
-            // 
-            this.insertPersonnelButton.Location = new System.Drawing.Point(4, 5);
-            this.insertPersonnelButton.Name = "insertPersonnelButton";
-            this.insertPersonnelButton.Size = new System.Drawing.Size(72, 20);
-            this.insertPersonnelButton.TabIndex = 8;
-            this.insertPersonnelButton.Text = "New";
-            this.insertPersonnelButton.Click += new System.EventHandler(this.insertPersonnelButton_Click);
-            // 
-            // deletePersonnelButton
-            // 
-            this.deletePersonnelButton.Location = new System.Drawing.Point(4, 61);
-            this.deletePersonnelButton.Name = "deletePersonnelButton";
-            this.deletePersonnelButton.Size = new System.Drawing.Size(72, 20);
-            this.deletePersonnelButton.TabIndex = 10;
-            this.deletePersonnelButton.Text = "Delete";
-            this.deletePersonnelButton.Click += new System.EventHandler(this.deletePersonnelButton_Click);
-            // 
-            // editPersonnelButton
-            // 
-            this.editPersonnelButton.Location = new System.Drawing.Point(4, 33);
-            this.editPersonnelButton.Name = "editPersonnelButton";
-            this.editPersonnelButton.Size = new System.Drawing.Size(72, 20);
-            this.editPersonnelButton.TabIndex = 9;
-            this.editPersonnelButton.Text = "Edit";
-            this.editPersonnelButton.Click += new System.EventHandler(this.editPersonnelButton_Click);
-            // 
-            // personnelInputPanel
-            // 
-            this.personnelInputPanel.EnabledChanged += new System.EventHandler(this.personnelInputPanel_EnabledChanged);
-            // 
             // actionsMenuItem
             // 
             this.actionsMenuItem.MenuItems.Add(this.insertPersonnelMenuItem);
@@ -269,12 +211,15 @@ namespace EquipmentTracker
             this.cancelMenuItem.Text = "Cancel";
             this.cancelMenuItem.Click += new System.EventHandler(this.cancelMenuItem_Click);
             // 
+            // personnelInputPanel
+            // 
+            this.personnelInputPanel.EnabledChanged += new System.EventHandler(this.personnelInputPanel_EnabledChanged);
+            // 
             // personnelForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.controlsPanel);
             this.Controls.Add(this.personnelDetailsPanel);
             this.Controls.Add(this.personnelListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -285,7 +230,6 @@ namespace EquipmentTracker
             this.Load += new System.EventHandler(this.personnelForm_Load);
             this.Closed += new System.EventHandler(this.personnelForm_Closed);
             this.personnelDetailsPanel.ResumeLayout(false);
-            this.controlsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -307,11 +251,6 @@ namespace EquipmentTracker
         private System.Windows.Forms.TextBox rankTextBox;
         private System.Windows.Forms.TextBox ediTextBox;
         private System.Windows.Forms.MainMenu personnelMainMenu;
-        private System.Windows.Forms.Panel controlsPanel;
-        private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Button insertPersonnelButton;
-        private System.Windows.Forms.Button deletePersonnelButton;
-        private System.Windows.Forms.Button editPersonnelButton;
         private Microsoft.WindowsCE.Forms.InputPanel personnelInputPanel;
         private System.Windows.Forms.MenuItem actionsMenuItem;
         private System.Windows.Forms.MenuItem insertPersonnelMenuItem;
