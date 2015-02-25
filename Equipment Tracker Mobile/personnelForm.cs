@@ -355,5 +355,169 @@ namespace EquipmentTracker
                 personnelListBox.Visible = true;
             }
         }
+
+        private void insertPersonnelMenuItem_Click(object sender, EventArgs e)
+        {
+            if (insertPersonnelMenuItem.Text == "New")
+            {
+                togglePersonnelForm(true);
+                personnelListBox.Enabled = false;
+                insertPersonnelMenuItem.Text = "Insert";
+                deletePersonnelMenuItem.Enabled = false;
+                cancelMenuItem.Enabled = true;
+                editPersonnelMenuItem.Enabled = false;
+                clearPersonnelForm();
+                Scanning.StartRead();
+            }
+            else if (MessageBox.Show("Are you sure you want to commit this information to the database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (lastNameTextBox.Text != "" && firstNameTextBox.Text != "" && ediTextBox.Text != "" && rankTextBox.Text != "")
+                {
+                    try
+                    {
+                        SQLiteCommand addPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
+                        addPersonnelCommand.CommandText = "INSERT INTO Personnel (PersonnelEDI, FirstName, LastName, Rank, Branch, MiddleInitial) VALUES ('" +
+                            ediTextBox.Text.Trim() + "', '" + firstNameTextBox.Text.Trim() + "', '" + lastNameTextBox.Text.Trim() + "', '" +
+                            rankTextBox.Text.Trim() + "', '" + branchComboBox.SelectedValue.ToString() + "', '" + middleInitialTextBox.Text.Trim() + "')";
+                        kumpotDBConnection.Open();
+                        addPersonnelCommand.ExecuteScalar();
+                        kumpotDBConnection.Close();
+                        MessageBox.Show("Personnel Added");
+
+                        insertPersonnelMenuItem.Text = "New";
+                        cancelMenuItem.Enabled = false;
+                        deletePersonnelMenuItem.Enabled = true;
+                        editPersonnelMenuItem.Enabled = true;
+                        personnelListBox.Enabled = true;
+
+                        togglePersonnelForm(false);
+                        clearPersonnelForm();
+                        refreshPersonnelListbox();
+                        Scanning.StopRead();
+                    }
+                    catch (SQLiteException sqliteException)
+                    {
+                        MessageBox.Show(sqliteException.Message);
+                        //if (sqliteException.ErrorCode == SQLiteErrorCode.Constraint)
+                        //{
+                        //    MessageBox.Show("Entered EDI number is not unique and already added.  User is possibly already added.", "Invalid EDI", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        //}
+                    }
+                    finally
+                    {
+                        kumpotDBConnection.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Missing required information");
+                }
+            }
+        }
+
+        private void cancelMenuItem_Click(object sender, EventArgs e)
+        {
+            if (insertPersonnelMenuItem.Text == "Insert")
+            {
+                insertPersonnelMenuItem.Text = "New";
+                Scanning.StopRead();
+                togglePersonnelForm(false);
+                clearPersonnelForm();
+                refreshPersonnelDetails(personnelListBox.SelectedValue.ToString());
+                editPersonnelMenuItem.Enabled = true;
+            }
+            else if (editPersonnelMenuItem.Text == "Update")
+            {
+                editPersonnelMenuItem.Text = "Edit";
+                togglePersonnelForm(false);
+                clearPersonnelForm();
+                refreshPersonnelDetails(personnelListBox.SelectedValue.ToString());
+                insertPersonnelMenuItem.Enabled = true;
+                ediTextBox.Enabled = true;
+            }
+            personnelListBox.Enabled = true;
+            cancelMenuItem.Enabled = false;
+            deletePersonnelMenuItem.Enabled = true;
+        }
+
+        private void editPersonnelMenuItem_Click(object sender, EventArgs e)
+        {
+            if (editPersonnelMenuItem.Text == "Edit")
+            {
+                togglePersonnelForm(true);
+                ediTextBox.Enabled = false;
+                editPersonnelMenuItem.Text = "Update";
+                cancelMenuItem.Enabled = true;
+                deletePersonnelMenuItem.Enabled = false;
+                insertPersonnelMenuItem.Enabled = false;
+                personnelListBox.Enabled = false;
+            }
+            else if (MessageBox.Show("Are you sure you want to commit this information to the database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (lastNameTextBox.Text != "" && firstNameTextBox.Text != "" && ediTextBox.Text != "" && rankTextBox.Text != "")
+                {
+                    try
+                    {
+                        SQLiteCommand editPersonnelCommand = new SQLiteCommand(kumpotDBConnection);
+                        editPersonnelCommand.CommandText = "UPDATE Personnel " +
+                            "SET LastName = '" + lastNameTextBox.Text.Trim() + "', " +
+                            "FirstName = '" + firstNameTextBox.Text.Trim() + "', " +
+                            "MiddleInitial = '" + middleInitialTextBox.Text.Trim() + "', " +
+                            "Rank = '" + rankTextBox.Text.Trim() + "', " +
+                            "Branch = '" + branchComboBox.SelectedValue.ToString() + "' " +
+                            "WHERE PersonnelEDI = " + ediTextBox.Text.Trim();
+                        kumpotDBConnection.Open();
+                        editPersonnelCommand.ExecuteScalar();
+                        kumpotDBConnection.Close();
+                        togglePersonnelForm(false);
+                        MessageBox.Show("Personnel Updated");
+
+                        editPersonnelMenuItem.Text = "Edit";
+                        refreshPersonnelListbox();
+                        cancelMenuItem.Enabled = false;
+                        deletePersonnelMenuItem.Enabled = true;
+                        insertPersonnelMenuItem.Enabled = true;
+                        ediTextBox.Enabled = true;
+                        personnelListBox.Enabled = true;
+                    }
+                    catch (SQLiteException sqliteException)
+                    {
+                        MessageBox.Show(sqliteException.Message.ToString());
+                    }
+                    finally
+                    {
+                        kumpotDBConnection.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Missing required information");
+                }
+            }
+        }
+
+        private void deletePersonnelMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete the selected person?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                try
+                {
+                    SQLiteCommand deletePersonnelCommand = new SQLiteCommand(@"DELETE FROM Personnel WHERE PersonnelEDI = $EDINumber", kumpotDBConnection);
+                    deletePersonnelCommand.Parameters.AddWithValue("$EDINumber", personnelListBox.SelectedValue.ToString());
+                    kumpotDBConnection.Open();
+                    deletePersonnelCommand.ExecuteNonQuery();
+                    kumpotDBConnection.Close();
+                    refreshPersonnelListbox();
+                }
+                catch (SQLiteException sqliteEx)
+                {
+                    MessageBox.Show(sqliteEx.Message);
+                }
+                finally
+                {
+                    kumpotDBConnection.Close();
+                }
+            }
+        }
     }
 }

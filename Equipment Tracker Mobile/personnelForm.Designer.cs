@@ -28,6 +28,7 @@ namespace EquipmentTracker
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(personnelForm));
             this.personnelDetailsPanel = new System.Windows.Forms.Panel();
             this.branchComboBox = new System.Windows.Forms.ComboBox();
@@ -49,7 +50,12 @@ namespace EquipmentTracker
             this.insertPersonnelButton = new System.Windows.Forms.Button();
             this.deletePersonnelButton = new System.Windows.Forms.Button();
             this.editPersonnelButton = new System.Windows.Forms.Button();
-            this.personnelInputPanel = new Microsoft.WindowsCE.Forms.InputPanel();
+            this.personnelInputPanel = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
+            this.actionsMenuItem = new System.Windows.Forms.MenuItem();
+            this.insertPersonnelMenuItem = new System.Windows.Forms.MenuItem();
+            this.editPersonnelMenuItem = new System.Windows.Forms.MenuItem();
+            this.deletePersonnelMenuItem = new System.Windows.Forms.MenuItem();
+            this.cancelMenuItem = new System.Windows.Forms.MenuItem();
             this.personnelDetailsPanel.SuspendLayout();
             this.controlsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +184,11 @@ namespace EquipmentTracker
             this.personnelListBox.TabIndex = 0;
             this.personnelListBox.SelectedValueChanged += new System.EventHandler(this.personnelListBox_SelectedValueChanged);
             // 
+            // personnelMainMenu
+            // 
+            this.personnelMainMenu.MenuItems.Add(this.actionsMenuItem);
+            this.personnelMainMenu.MenuItems.Add(this.cancelMenuItem);
+            // 
             // controlsPanel
             // 
             this.controlsPanel.Controls.Add(this.cancelButton);
@@ -230,6 +241,34 @@ namespace EquipmentTracker
             // 
             this.personnelInputPanel.EnabledChanged += new System.EventHandler(this.personnelInputPanel_EnabledChanged);
             // 
+            // actionsMenuItem
+            // 
+            this.actionsMenuItem.MenuItems.Add(this.insertPersonnelMenuItem);
+            this.actionsMenuItem.MenuItems.Add(this.editPersonnelMenuItem);
+            this.actionsMenuItem.MenuItems.Add(this.deletePersonnelMenuItem);
+            this.actionsMenuItem.Text = "Actions";
+            // 
+            // insertPersonnelMenuItem
+            // 
+            this.insertPersonnelMenuItem.Text = "New";
+            this.insertPersonnelMenuItem.Click += new System.EventHandler(this.insertPersonnelMenuItem_Click);
+            // 
+            // editPersonnelMenuItem
+            // 
+            this.editPersonnelMenuItem.Text = "Edit";
+            this.editPersonnelMenuItem.Click += new System.EventHandler(this.editPersonnelMenuItem_Click);
+            // 
+            // deletePersonnelMenuItem
+            // 
+            this.deletePersonnelMenuItem.Text = "Delete";
+            this.deletePersonnelMenuItem.Click += new System.EventHandler(this.deletePersonnelMenuItem_Click);
+            // 
+            // cancelMenuItem
+            // 
+            this.cancelMenuItem.Enabled = false;
+            this.cancelMenuItem.Text = "Cancel";
+            this.cancelMenuItem.Click += new System.EventHandler(this.cancelMenuItem_Click);
+            // 
             // personnelForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -243,8 +282,8 @@ namespace EquipmentTracker
             this.MinimizeBox = false;
             this.Name = "personnelForm";
             this.Text = "Personnel";
-            this.Closed += new System.EventHandler(this.personnelForm_Closed);
             this.Load += new System.EventHandler(this.personnelForm_Load);
+            this.Closed += new System.EventHandler(this.personnelForm_Closed);
             this.personnelDetailsPanel.ResumeLayout(false);
             this.controlsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -274,5 +313,10 @@ namespace EquipmentTracker
         private System.Windows.Forms.Button deletePersonnelButton;
         private System.Windows.Forms.Button editPersonnelButton;
         private Microsoft.WindowsCE.Forms.InputPanel personnelInputPanel;
+        private System.Windows.Forms.MenuItem actionsMenuItem;
+        private System.Windows.Forms.MenuItem insertPersonnelMenuItem;
+        private System.Windows.Forms.MenuItem editPersonnelMenuItem;
+        private System.Windows.Forms.MenuItem deletePersonnelMenuItem;
+        private System.Windows.Forms.MenuItem cancelMenuItem;
     }
 }

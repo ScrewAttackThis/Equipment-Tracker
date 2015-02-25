@@ -6,3 +6,11 @@ Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment_Tr
 Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.csproj.GenerateResource.Cache
 Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.exe
 Z:\Development\Mobile Dev (WORK)\KUMPOT\Equipment Tracker\obj\Debug\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\bin\Debug\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\bin\Debug\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\Equipment_Tracker.equipmentTrackerForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\Equipment_Tracker.Properties.Resources.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\Equipment Tracker.csproj.GenerateResource.Cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker\obj\Debug\Equipment Tracker.pdb

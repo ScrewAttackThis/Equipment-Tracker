@@ -20,3 +20,16 @@ C:\Users\michael\Documents\Visual Studio 2008\Projects\KUMPOT\Equipment Tracker 
 C:\Users\michael\Documents\Visual Studio 2008\Projects\KUMPOT\Equipment Tracker Mobile\obj\Debug\Equipment Tracker Mobile.csproj.GenerateResource.Cache
 C:\Users\michael\Documents\Visual Studio 2008\Projects\KUMPOT\Equipment Tracker Mobile\obj\Debug\Equipment Tracker.exe
 C:\Users\michael\Documents\Visual Studio 2008\Projects\KUMPOT\Equipment Tracker Mobile\obj\Debug\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\bin\Debug\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\bin\Debug\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\EquipmentTracker.checkOutForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\EquipmentTracker.equipmentForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\EquipmentTracker.equipTrackerMobile.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\EquipmentTracker.personnelForm.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\EquipmentTracker.Properties.Resources.resources
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\Equipment Tracker Mobile.csproj.GenerateResource.Cache
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\Equipment Tracker.exe
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\obj\Debug\Equipment Tracker.pdb
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\bin\Debug\Data\equiptracker.db3
+C:\Users\michael\Documents\Visual Studio 2008\Projects\Equipment-Tracker\Equipment Tracker Mobile\bin\Debug\SQLite.Interop.094.dll

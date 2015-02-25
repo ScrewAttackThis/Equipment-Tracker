@@ -94,7 +94,7 @@ namespace EquipmentTracker
             this.Controls.Add(this.viewPersonnelButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "equipTrackerMobile";
-            this.Text = "KUMPOT Mobile";
+            this.Text = "Equipment Tracker Mobile";
             this.ResumeLayout(false);
 
         }
